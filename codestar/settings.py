@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-sofiabourdo-redditclone-dxzmcaiibbk.ws-eu99.gitpod.io',
+    '8000-sofiabourdo-redditclone-dxzmcaiibbk.ws-eu100.gitpod.io',
     'reddit-clone-site.herokuapp.com',
     'localhost',
 ]
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'django_summernote',
     'blog',
 ]
 
