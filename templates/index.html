@@ -2,21 +2,32 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-
-        <!-- Blog Entries Column -->
-        <div class="col">
-            <div class="row">
+        <div class="col-md-8">
+            <div class="post-list">
                 {% for post in post_list %}
-
-                {% endfor %}
-                <div class="row">
+                <div class="post-card">
+                    <div class="post-header">
+                        <img src="{{ post.image.url }}" class="card-img-top" alt="Post Image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <p class="">{{ post.content }}</p>
+                            <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">Read More</a>
+                            <div class="votes_count">
+                                <span class="number-of-votes">{{ post.total_votes }}</span>
+                                <span class="votes-label">votes</span>
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Posted on {{ post.created_on }} by {{ post.author }}
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-
 </div>
 
-{%endblock%}
+{% endblock %}

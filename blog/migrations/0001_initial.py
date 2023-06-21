@@ -31,7 +31,6 @@ class Migration(migrations.Migration):
                 ('slug', models.SlugField(max_length=200, unique=True)),
                 ('updated_on', models.DateTimeField(auto_now=True)),
                 ('content', models.TextField()),
-                ('featured_image', cloudinary.models.CloudinaryField(default='placeholder', max_length=255, verbose_name='image')),
                 ('excerpt', models.TextField(blank=True)),
                 ('created_on', models.DateTimeField(auto_now_add=True)),
                 ('status', models.IntegerField(choices=[(0, 'Draft'), (1, 'Published')], default=0)),
