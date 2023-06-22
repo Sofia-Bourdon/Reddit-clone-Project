@@ -80,3 +80,6 @@ def get_posts_ordered_by_votes():
         total_votes=models.Count('upvotes') - models.Count('downvotes')
     ).order_by('-total_votes', '-created_on')
     return posts
+
+class Comment(models.Model):
+    body = models.TextField()

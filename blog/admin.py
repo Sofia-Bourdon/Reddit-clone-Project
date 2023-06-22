@@ -16,7 +16,7 @@ class PostAdmin(SummernoteModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'post', 'created_on', 'body')
+    list_display = ('get_post_title', 'created_on', 'body')
     list_filter = ('created_on', 'approved')
     search_fields = ('name', 'email', 'post__title', 'body')
     fieldsets = (
@@ -25,13 +25,21 @@ class CommentAdmin(admin.ModelAdmin):
         ('Metadata', {'fields': ('post', 'created_on')}),
     )
     actions = [
-        'approve_comments'
-        'edit_comments'
-        'delete_comments'
-        ]
+        'approve_comments',
+        'edit_comments',
+        'delete_comments',
+    ]
     
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
 
+    def get_post_title(self, obj):
+        return obj.post.title
+
+    get_post_title.short_description = 'Post Title'
+
+
+admin.site.unregister(Comment)
 
 admin.site.register(Subreddit)
+
