@@ -39,7 +39,5 @@ class CommentAdmin(admin.ModelAdmin):
     get_post_title.short_description = 'Post Title'
 
 
-admin.site.unregister(Comment)
-
 admin.site.register(Subreddit)
 
