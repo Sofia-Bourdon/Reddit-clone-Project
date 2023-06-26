@@ -143,16 +143,12 @@ body {
     text-decoration: underline;
 }
 
-/* Style the like button */
-.btn-like {
-    color: #E84610;
-    border: none;
-    background: transparent;
-}
-
-.btn-like:hover,
-.btn-like:active {
-    color: #E84610;
-    background: transparent;
-    border: none;
-}
+/* Upvote button */
+.upvote-btn.active {
+    color: green;
+  }
+  
+  /* Downvote button */
+  .downvote-btn.active {
+    color: red;
+  }

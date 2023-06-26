@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% block content %}
 
@@ -11,8 +11,17 @@
                 <div class="post-header">
                     <div class="col post-votes">
                         <div class="votes col">
-                            <a href="#" class="row"><i class="fa-regular fa-up"></i></a>
-                            <a href="#" class="row"><i class="fa-regular fa-down"></i></a>
+                            {% if user.is_authenticated %}
+                            <form method="POST">
+                                {% csrf_token %}
+                                <button type="submit" name="upvote" class="upvote-btn {% if user in post.upvotes.all %}active{% endif %}">
+                                    <i class="fa-regular fa-up"></i>
+                                </button>
+                                <button type="submit" name="downvote" class="downvote-btn {% if user in post.downvotes.all %}active{% endif %}">
+                                    <i class="fa-regular fa-down"></i>
+                                </button>                                
+                            </form>
+                            {% endif %}
                         </div>
                         <div class="votes_count">
                             <span class="number-of-votes">{{ post.total_votes }}</span>
@@ -20,12 +29,12 @@
                         </div>
                     </div>
                     <div class="post-details">
-                        <h1 class="post-title">{{ post.title }}</h1>
+                        <h2 class="post-title">{{ post.title }}</h2>
                         <p class="post-author">{{ post.author }} | {{ post.created_on }}</p>
                     </div>
                 </div>
                 <div class="post-content">
-                    <p>{{ post.content }}</p>
+                    <p>{{ post.content|safe }}</p>
                 </div>
                 <div class="post-actions">
                     <span class="comment-count">{{ post.comments.count }} comments</span>
@@ -33,7 +42,7 @@
             </div>
             
             <div class="comments-section">
-                <h3>Comments:</h3>
+                <h4>Comments:</h4>
                 {% for comment in comments %}
                 <div class="comment-card">
                     <div class="comment-header">
@@ -44,13 +53,11 @@
                     </div>
                 </div>
                 {% endfor %}
-
-                <!-- Add comment form section -->
                 <div class="comment-form-section">
                     <h5>Add a Comment:</h5>
                     <form method="POST" class="comment-form">
-                        {{ comment_form|crispy }}
                         {% csrf_token %}
+                        {{ comment_form.body }}
                         <button class="btn btn-primary" type="submit">Comment</button>
                     </form>
                 </div>
