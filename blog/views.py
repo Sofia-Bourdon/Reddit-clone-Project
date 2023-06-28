@@ -1,14 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib.auth.decorators import login_required
-from .models import Post
-from .forms import CommentForm
+from .models import Post, Profile, Subreddit
+from .forms import CommentForm, PostForm
 
 
 class PostList(generic.ListView):
     model = Post
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    queryset = Post.objects.filter(status=1).order_by('upvotes')
     template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['subreddits'] = Subreddit.objects.all()
+        return context
 
 
 @login_required
@@ -75,3 +80,31 @@ def comment_post(request, slug):
     else:
         form = CommentForm()
     return render(request, 'comment.html', {'form': form})
+    
+
+@login_required
+def subreddit(request, slug):
+    subreddit = get_object_or_404(Subreddit, slug=slug)
+    posts = Post.objects.filter(subreddit=subreddit)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.subreddit = subreddit
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm()
+
+    return render(
+        request,
+        'subreddit.html',
+        {
+            'subreddit': subreddit,
+            'form': form,
+            'posts': posts,
+        },
+    )
+
