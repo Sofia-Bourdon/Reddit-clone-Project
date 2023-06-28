@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-sofiabourdo-redditclone-dxzmcaiibbk.ws-eu100.gitpod.io',
+    '8000-sofiabourdo-redditclone-dxzmcaiibbk.ws-eu101.gitpod.io',
     'reddit-clone-site.herokuapp.com',
     'localhost',
 ]
