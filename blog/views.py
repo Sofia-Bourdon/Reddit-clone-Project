@@ -86,6 +86,7 @@ def comment_post(request, slug):
 def subreddit(request, slug):
     subreddit = get_object_or_404(Subreddit, slug=slug)
     posts = Post.objects.filter(subreddit=subreddit)
+    subreddits = Subreddit.objects.all()
 
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -105,6 +106,24 @@ def subreddit(request, slug):
             'subreddit': subreddit,
             'form': form,
             'posts': posts,
+            'subreddits': subreddits,
         },
     )
 
+
+def make_new_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            new.post = post
+            post.author = request.user
+            post.subreddit = subreddit
+            post.status = STATUS_CHOICES[1]
+            post.save()
+            return redirect('subreddit.html', pk=post.pk)
+    else:
+        form = PostForm()
+    return render(request, 'post.html', {'form': form})
+    
