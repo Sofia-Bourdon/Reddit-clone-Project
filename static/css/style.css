@@ -7,6 +7,16 @@
 
 /* Background color for the body */
 body {
+    background-color: #EFFAFD;
+}
+
+/* Remove default link styles */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
     background-color: #F9FAFC;
 }
 
@@ -19,7 +29,7 @@ body {
 }
 
 .red-o {
-    color: #E84610;
+    color: #D13120;
 }
 
 .thin {
@@ -41,9 +51,20 @@ body {
     background-color: #F9FAFC;
 }
 
+.post-open {
+    background-color: white;
+    padding: 3%;
+}
+
 .card {
     border: none;
     background-color: transparent;
+}
+
+.post-card {
+    background-color: white;
+    margin-top: 3%;
+    padding: 3%;
 }
 
 .image-container {
@@ -101,18 +122,13 @@ body {
 /* Style the post link and page link */
 .post-link,
 .page-link {
-    text-decoration: none;
     color: #445261;
+    text-decoration: none;
 }
 
-.post-link:hover,
-.page-link:hover {
-    color: #E84610;
-}
 
 .post-title {
-    margin-top: 20%;
-    margin-left: 5%;
+    margin-top: 5%;
 }
 
 .post-subtitle {
@@ -122,33 +138,79 @@ body {
 
 /* Style the signup button */
 .btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
+    background-color: white;
+    color: #339966;
+    border: 1px dotted #339966;
+    font-weight: 500;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: #339966;
+    color: white;
 }
 
+.btn-signout {
+    background-color: #D7DBDD;
+}
+
+.btn-signout:hover,
+.btn-signup:active {
+    font-weight: 500;
+    color: #CC3300;
+    border: 1px dotted #CC3300;
+}
+
+
 .link {
-    color: #23BBBB;
+    color: #339966;;
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
     color: #445261;
-    text-decoration: underline;
+    text-decoration: none;
+}
+
+.upvote-btn {
+    color:	#B8B8B8;
+    background-color: #F9FAFC;
+    border-style: none;
+}
+
+.downvote-btn {
+    color: #B8B8B8;
+    background-color: #F9FAFC;
+    border-style: none;
 }
 
 /* Upvote button */
 .upvote-btn.active {
     color: green;
-  }
-  
-  /* Downvote button */
-  .downvote-btn.active {
+    border-color: #F9FAFC;
+}
+
+/* Downvote button */
+.downvote-btn.active {
     color: red;
-  }
+    border-color: none;
+}
+
+.comment-button {
+    border: 3px solid #6495ED;
+    background-color: #91B2EC;
+    color: white;
+    font-weight: 500;
+}
+
+.footer {
+    background-color: #F2F4F4;
+}
+
+.subreddits-list {
+    padding: 1%;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+}

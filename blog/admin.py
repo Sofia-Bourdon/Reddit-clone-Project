@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment, Subreddit
+from .models import Post, Comment, Subreddit, Profile
 from django_summernote.admin import SummernoteModelAdmin
 from django.db import models
 
@@ -39,5 +39,10 @@ class CommentAdmin(admin.ModelAdmin):
     get_post_title.short_description = 'Post Title'
 
 
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    model = Profile
+
+#Code taken from: https://codinggear.blog/how-to-register-model-in-django-admin/?utm_content=cmp-true
 admin.site.register(Subreddit)
 

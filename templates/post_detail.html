@@ -22,6 +22,12 @@
                                 </button>                                
                             </form>
                             {% endif %}
+                            {% if post.author == request.user %}
+                            <form method="POST" action="{% url 'delete_post' post.slug %}">
+                                {% csrf_token %}
+                                <button type="submit">Delete Post</button>
+                            </form>
+                            {% endif %}
                         </div>
                         <div class="votes_count">
                             <span class="number-of-votes">{{ post.total_votes }}</span>
@@ -41,6 +47,7 @@
                     <span class="comment-count">{{ post.comments.count }} comments</span>
                 </div>
             </div>
+            
     
             <div class="comments-section">
                 <h4>Comments:</h4>
@@ -66,5 +73,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    const commentForm = document.querySelector('.comment-form');
+
+    commentForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        alert('Your comment is awaiting approval');
+        commentForm.submit();
+    });
+</script>
 
 {% endblock %}

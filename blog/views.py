@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib.auth.decorators import login_required
-from .models import Post, Profile, Subreddit
+from .models import Post, Subreddit
 from .forms import CommentForm, PostForm
 
 
@@ -79,7 +79,7 @@ def comment_post(request, slug):
             return redirect('post_detail', pk=post.pk)
     else:
         form = CommentForm()
-    return render(request, 'comment.html', {'form': form})
+    return render(request, 'post_detail.html', {'form': form})
     
 
 @login_required
@@ -126,4 +126,10 @@ def make_new_post(request, slug):
     else:
         form = PostForm()
     return render(request, 'post.html', {'form': form})
-    
+
+
+def delete_post(request, slug):
+    post = get_object_or_404(Post, slug=slug, status=1)
+    if post.author == request.user and request.method == 'POST':
+        post.delete()
+    return redirect('home')
