@@ -55,11 +55,11 @@ Reddit Clone is a web application designed to replicate some of the functionalit
 
 ## Credits
 
-This project was made possible with the initial guidance of my tutor Akshat Garg and the support of tutors from Code Institute.
-The following external sources were consulted:
-Code Institute for providing the necessary tools, guidance, and inspiration.
-Stack Overflow and other online developer communities for troubleshooting and problem-solving.
-The following websites were consulted for additional information and guidance:
+* This project was made possible with the initial guidance of my tutor Akshat Garg and the support of tutors from Code Institute.
+* The following external sources were consulted:
+* Code Institute for providing the necessary tools, guidance, and inspiration.
+* Stack Overflow and other online developer communities for troubleshooting and problem-solving.
+* The following websites were consulted for additional information and guidance:
 https://djangocentral.com/creating-comments-system-with-django/
 https://stackoverflow.com/questions/21123559/django-redirect-all-non-authenticated-users-to-landing-page
 https://docs.djangoproject.com/en/4.2/ref/models/fields/
