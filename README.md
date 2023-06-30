@@ -31,8 +31,6 @@ Reddit Clone is a web application designed to replicate some of the functionalit
 ### Making posts and comments
 <img width="1159" alt="Screenshot 2023-06-29 at 23 26 38" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/060802b5-418f-42ce-bf77-4e3c5c87b522">
 * Inside a subreddit of choice a registered user can create a new post with a title, slug, and content.
-
-<img width="1159" alt="Screenshot 2023-06-29 at 23 26 38" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/7dcbb9bd-4973-4830-bdd6-1278c39c1aa5">
 * All posts from the same subreddit are displayed inside the subreddit page and categorized on the homepage by displaying the subreddit tag.
 
 <img width="1069" alt="Screenshot 2023-06-29 at 23 31 13" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/f52abbea-8dec-4ae6-bc37-a04df0cd07ad">
