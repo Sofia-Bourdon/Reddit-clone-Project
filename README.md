@@ -1,8 +1,7 @@
 # Welcome to Reddit Clone
 
 Reddit Clone is a web application designed to replicate some of the functionalities and features of the popular social media platform Reddit. It allows users to create accounts, submit posts, comment on posts, and interact with other users through voting and discussions.
-
-<img width="1266" alt="Screenshot 2023-06-29 at 23 36 13" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/946856bd-22ba-4b1e-919e-712d1ba8e162">
+<img width="1297" alt="Screenshot 2023-06-30 at 11 37 53" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/77796283-7215-4d99-aa07-48bb6c0b96b9">
 
 ## How to Use
 * Become a new user by registering a username, email (optional), and password.
