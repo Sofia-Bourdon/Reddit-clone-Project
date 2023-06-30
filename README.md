@@ -70,7 +70,9 @@ Reddit Clone is a web application designed to replicate some of the functionalit
 * The user tested high in accessibility, performance, and best practices.
 <img width="599" alt="Screenshot 2023-06-29 at 22 50 10 1" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/596165f3-d954-465b-a537-c99986e2a532">
 * Manual and automated tests were carried out during the development of the application.
-* An initial problem when posting on a subreddit was solved by adding a slug field inside the post.
+* An initial problem when posting on a subreddit was solved by adding a slug field inside the post. Unfortunately, the 'slugify' feature could not be implemented in this version and users will need to add a slug manually when making a new post.
+* Due to constant errors and bugs the 'User Profiles' feature was removed from this version for better functionality.
+  
 
 ## Credits
 
