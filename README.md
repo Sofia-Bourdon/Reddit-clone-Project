@@ -40,6 +40,25 @@ Reddit Clone is a web application designed to replicate some of the functionalit
 * Posts with the highest ratio of upvotes to downvotes will be displayed first.
 * Comments can be added to posts, fostering discussions and interactions.
 
+### Admin panel and content moderation
+<img width="1512" alt="Screenshot 2023-06-30 at 09 26 25" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/8d983e7e-5769-49b3-8ea1-d507f1466958">
+* A registered admin (superuser) can access the admin panel where all posts, comments, subreddits, and profiles (future) can be edited or deleted.
+
+<img width="1510" alt="Screenshot 2023-06-30 at 09 34 03" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/ede8ea3e-a2c5-4004-99b2-ca59458fdaf3">
+* Posts can be filtered by their 'status' and 'created on' or searched on the search bar for easier access.
+* A new post can also be made by an admin by clicking 'add post +'.
+* Admins can edit and change the status of posts (from 'Draft' to 'Published' and vice versa) which allows the posts made by users to be displayed on the homepage. 
+
+<img width="1509" alt="Screenshot 2023-06-30 at 09 42 19" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/aa993318-0204-4c7a-8d26-5960f4bb0914">
+* Comments can also be moderated by admins by clicking the 'Comments' section on the admin panel.
+* Similarly to the 'Posts' section the 'Comments' allows all comments to be filtered for easier access.
+* All comments made by users must be approved by admins before displaying under a post.
+* Admins can also make new comments by clicking on the 'Add Comment +' button.
+
+<img width="1509" alt="Screenshot 2023-06-30 at 09 47 19" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/6f367407-9311-47c7-b967-56cd7e9414d4">
+* The 'Subreddits' section allows registered admins to filter, edit and delete subreddits.
+* New subreddits can only be created by admins through the admin panel by clicking on 'Add Subreddit +' bb
+
 ### Future Enhancements
 * User Profiles and Customization feature where users can add a profile picture and bio when registering to later revisit or edit.
 * Friend request feature where users can add each other and connect.
