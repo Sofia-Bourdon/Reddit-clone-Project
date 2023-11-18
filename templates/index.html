@@ -12,18 +12,33 @@
                     <div class="col-md-8">
                         <div class="post-list">
                             {% for post in post_list %}
+                            <!-- card showcasing the post  -->
                             <a href="{% url 'post_detail' post.id %}">
                                 <div class="post-card">
-                                    <h6 class="subreddit-id">{{ post.subreddit }}</h6>
+                                    <!-- top section with subreddit name and edit/delete options -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6 class="subreddit-id">{{ post.subreddit }}</h6>
+                                        </div>
+                                        <div class="col d-flex justify-content-end">
+                                            {% if post.author == request.user %}
+                                            <form method="POST" action="{% url 'delete_post' post.slug %}">
+                                                {% csrf_token %}
+                                                <button class="btn" type="submit">Delete Post</button>
+                                            </form>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <!-- upvote and downvote buttons section -->
                                     <div class="row">
                                         <div class="col-auto">
-                                            <div class="row votes my-5">
+                                            <div class="row votes">
                                                 {% if user.is_authenticated %}
                                                 <form method="POST">
                                                     {% csrf_token %}
                                                     <div class="col text-center">
                                                         <button type="submit" name="upvote"
-                                                            class="upvote-btn {% if user in post.upvotes.all %}active{% endif %}">
+                                                            class="btn upvote-btn {% if user in post.upvotes.all %}active{% endif %}">
                                                             <i class="fa-solid fa-arrow-up fa-xl"></i>
                                                         </button>
                                                     </div>
@@ -32,7 +47,7 @@
                                                     </div>
                                                     <div class="col text-center">
                                                         <button type="submit" name="downvote"
-                                                            class="downvote-btn {% if user in post.downvotes.all %}active{% endif %}">
+                                                            class="btn downvote-btn {% if user in post.downvotes.all %}active{% endif %}">
                                                             <i class="fa-solid fa-arrow-down fa-xl"></i>
                                                         </button>
                                                     </div>
@@ -41,24 +56,27 @@
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-6 col-md-8">
-                                            {% if post.author == request.user %}
-                                            <form method="POST" action="{% url 'delete_post' post.slug %}">
-                                                {% csrf_token %}
-                                                <button type="submit">Delete Post</button>
-                                            </form>
-                                            {% endif %}
                                             <div class="post-header">
                                                 {% if post.image %}
                                                 <img src="{{ post.image.url }}" class="card-img-top" alt="Post Image">
                                                 {% endif %}
                                                 <div class="card-body">
-                                                    <h5 class="card-title">{{ post.title }}</h5>
+                                                    <h6 class="card-title">{{ post.title }}</h6>
                                                     <p>{{ post.content|safe }}</p>
                                                 </div>
-                                                <div class="text-muted">
-                                                    Posted on {{ post.created_on }} by {{ post.author }}
-                                                </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <!-- botton of the card with date/time and comments count -->
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <p class="text-muted">
+                                                Posted on {{ post.created_on }} by {{ post.author }}
+                                            </p>
+                                        </div>
+                                        <div class="col-auto text-dark d-flex justify-content-end">
+                                            <span class="comment-count"><i class="fa-regular fa-comment"></i>
+                                                {{ post.comments.count }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -66,8 +84,8 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="subreddits-list col-md-4">
-                        <h5>Subreddits</h5>
+                    <!-- subreddits section -->
+                    <div class="subreddits-list col-md-4 mt-4">
                         <ul class="list-group-subreddits">
                             {% for subreddit in subreddits %}
                             <li class="list-group-item">

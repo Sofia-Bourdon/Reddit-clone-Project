@@ -5,58 +5,104 @@
 {% load crispy_forms_tags %}
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <h2>Welcome to {{ subreddit.name }}</h2>
-      <div class="post-list">
-        {% for post in posts %}
-        <div class="post-card">
-          <a href="{% url 'post_detail' post.id %}">
-            <h6 class="subreddit-id">{{ post.subreddit }}</h6>
-            <div class="post-header">
-              {% if post.image %}
-              <img src="{{ post.image.url }}" class="card-img-top" alt="Post Image">
-              {% endif %}
-              <div class="card-body">
-                <h5 class="card-title">{{ post.title }}</h5>
-                <p>{{ post.content|safe }}</p>
-                <div class="votes_count">
-                  <span class="number-of-votes">{{ post.total_votes }}</span>
-                  <span class="votes-label">votes</span>
-                </div>
-              </div>
-              <div class="text-muted">
-                Posted on {{ post.created_on }} by {{ post.author }}
-              </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Welcome to {{ subreddit.name }}</h2>
+            <p>{{ subreddit.description }}</p>
+            <div class="post-list">
+                {% for post in posts %}
+                <!-- card showcasing the post  -->
+                <a href="{% url 'post_detail' post.id %}">
+                    <div class="post-card">
+                        <div class="row">
+                            <div class="col">
+                                <h6 class="subreddit-id">{{ post.subreddit }}</h6>
+                            </div>
+                            <div class="col d-flex justify-content-end">
+                                {% if post.author == request.user %}
+                                <form method="POST" action="{% url 'delete_post' post.slug %}">
+                                    {% csrf_token %}
+                                    <button class="btn" type="submit">Delete Post</button>
+                                </form>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="row votes">
+                                    {% if user.is_authenticated %}
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <div class="col text-center">
+                                            <button type="submit" name="upvote"
+                                                class="btn upvote-btn {% if user in post.upvotes.all %}active{% endif %}">
+                                                <i class="fa-solid fa-arrow-up fa-xl"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col text-center my-1">
+                                            <span class="number-of-votes">{{ post.total_votes }}</span>
+                                        </div>
+                                        <div class="col text-center">
+                                            <button type="submit" name="downvote"
+                                                class="btn downvote-btn {% if user in post.downvotes.all %}active{% endif %}">
+                                                <i class="fa-solid fa-arrow-down fa-xl"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-8">
+                                <div class="post-header">
+                                    {% if post.image %}
+                                    <img src="{{ post.image.url }}" class="card-img-top" alt="Post Image">
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <h6 class="card-title">{{ post.title }}</h6>
+                                        <p>{{ post.content|safe }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-auto">
+                                <p class="text-muted">
+                                    Posted on {{ post.created_on }} by {{ post.author }}
+                                </p>
+                            </div>
+                            <div class="col-auto text-dark d-flex justify-content-end">
+                                <span class="comment-count"><i class="fa-regular fa-comment"></i>
+                                    {{ post.comments.count }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
             </div>
-          </a>
+            <div class="content-section">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Add a Post:</legend>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Post</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        {% endfor %}
-      </div>
-      <div class="content-section">
-        <form method="POST">
-          {% csrf_token %}
-          <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Add a Post:</legend>
-            {{ form|crispy }}
-          </fieldset>
-          <div class="form-group">
-            <button class="btn btn-outline-info" type="submit">Post</button>
-          </div>
-        </form>
-      </div>
+        <div class="col-md-4">
+            <h5>Subreddits</h5>
+            <ul class="list-group-subreddits">
+                {% for subreddit in subreddits %}
+                <li class="list-group-item">
+                    <a href="{% url 'subreddit' subreddit.slug %}">{{ subreddit.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
-    <div class="col-md-4">
-      <h5>Subreddits</h5>
-      <ul class="list-group-subreddits">
-        {% for subreddit in subreddits %}
-        <li class="list-group-item">
-          <a href="{% url 'subreddit' subreddit.slug %}">{{ subreddit.name }}</a>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
 </div>
 
 {% endblock %}

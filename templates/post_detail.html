@@ -5,76 +5,120 @@
 
 {% load crispy_forms_tags %}
 
-<div class="container">
-    <div class="row">
-        <div class="post-open col-md-8">
-            <div class="post-detail">
-                <div class="post-header">
-                    <div class="col post-votes">
-                        <div class="votes col">
-                            {% if user.is_authenticated %}
-                            <form method="POST">
-                                {% csrf_token %}
-                                <button type="submit" name="upvote"
-                                    class="upvote-btn {% if user in post.upvotes.all %}active{% endif %}">
-                                    <i class="fa-solid fa-arrow-up"></i>
-                                </button>
-                                <button type="submit" name="downvote"
-                                    class="downvote-btn {% if user in post.downvotes.all %}active{% endif %}">
-                                    <i class="fa-solid fa-arrow-down"></i>
-                                </button>
-                            </form>
-                            {% endif %}
-                            {% if post.author == request.user %}
-                            <form method="POST" action="{% url 'delete_post' post.slug %}">
-                                {% csrf_token %}
-                                <button type="submit">Delete Post</button>
-                            </form>
-                            {% endif %}
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-8">
+                    <div class="row">
+                        <!-- Post detail -->
+                        <div class="post-open col-md-8">
+                            <div class="post-card">
+                                <!-- top section with subreddit name and edit/delete options -->
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="subreddit-id">{{ post.subreddit }}</h6>
+                                    </div>
+                                    <div class="col d-flex justify-content-end">
+                                        {% if post.author == request.user %}
+                                        <form method="POST" action="{% url 'delete_post' post.slug %}">
+                                            {% csrf_token %}
+                                            <button class="btn" type="submit">Delete Post</button>
+                                        </form>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <!-- upvote and downvote buttons section -->
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <div class="row votes">
+                                            {% if user.is_authenticated %}
+                                            <form method="POST">
+                                                {% csrf_token %}
+                                                <div class="col text-center">
+                                                    <button type="submit" name="upvote"
+                                                        class="btn upvote-btn {% if user in post.upvotes.all %}active{% endif %}">
+                                                        <i class="fa-solid fa-arrow-up fa-xl"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="col text-center my-1">
+                                                    <span class="number-of-votes">{{ post.total_votes }}</span>
+                                                </div>
+                                                <div class="col text-center">
+                                                    <button type="submit" name="downvote"
+                                                        class="btn downvote-btn {% if user in post.downvotes.all %}active{% endif %}">
+                                                        <i class="fa-solid fa-arrow-down fa-xl"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-8">
+                                        <div class="post-header">
+                                            {% if post.image %}
+                                            <img src="{{ post.image.url }}" class="card-img-top" alt="Post Image">
+                                            {% endif %}
+                                            <div class="card-body">
+                                                <h6 class="card-title">{{ post.title }}</h6>
+                                                <p>{{ post.content|safe }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- botton of the card with date/time and comments count -->
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <p class="text-muted">
+                                            Posted on {{ post.created_on }} by {{ post.author }}
+                                        </p>
+                                    </div>
+                                    <div class="col-auto text-dark d-flex justify-content-end">
+                                        <span class="comment-count"><i class="fa-regular fa-comment"></i>
+                                            {{ post.comments.count }}</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="votes_count">
-                            <span class="number-of-votes">{{ post.total_votes }}</span>
-                            <span class="votes-label">votes</span>
+
+                        <!-- Comments section -->
+                        <div class="comments-section">
+                            <h4>Comments:</h4>
+                            {% for comment in comments %}
+                            <div class="comment-card">
+                                <div class="comment-header">
+                                    <p class="comment-author">{{ profile.user }} | {{ comment.created_on }}</p>
+                                </div>
+                                <div class="comment-content">
+                                    <p>{{ comment.body }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <div class="comment-form-section">
+                                <h5>Add a Comment:</h5>
+                                <form method="POST" class="comment-form">
+                                    {% csrf_token %}
+                                    {{ comment_form.body }}
+                                    <button class="btn comment-button" type="submit">Comment</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div class="post-details">
-                        <h5 class="subreddit-id">{{ post.subreddit }}</h5>
-                        <h2 class="post-title">{{ post.title }}</h2>
-                        <p class="post-author">{{ post.author }} | {{ post.created_on }}</p>
-                    </div>
                 </div>
-                <div class="post-content">
-                    <p>{{ post.content|safe }}</p>
-                </div>
-                <div class="post-actions">
-                    <span class="comment-count">{{ post.comments.count }} comments</span>
-                </div>
-            </div>
-
-
-            <div class="comments-section">
-                <h4>Comments:</h4>
-                {% for comment in comments %}
-                <div class="comment-card">
-                    <div class="comment-header">
-                        <p class="comment-author">{{ profile.user }} | {{ comment.created_on }}</p>
-                    </div>
-                    <div class="comment-content">
-                        <p>{{ comment.body }}</p>
-                    </div>
-                </div>
-                {% endfor %}
-                <div class="comment-form-section">
-                    <h5>Add a Comment:</h5>
-                    <form method="POST" class="comment-form">
-                        {% csrf_token %}
-                        {{ comment_form.body }}
-                        <button class="btn comment-button" type="submit">Comment</button>
-                    </form>
+                <!-- subreddits section -->
+                <div class="subreddits-list col-md-4 mt-4">
+                    <ul class="list-group-subreddits">
+                        {% for subreddit in subreddits %}
+                        <li class="list-group-item">
+                            <a href="{% url 'subreddit' subreddit.slug %}">{{ subreddit.name }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script>

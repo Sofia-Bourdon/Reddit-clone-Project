@@ -41,7 +41,7 @@
     <header class="container-fluid">
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white p-2">
-            <div class="container-fluid">
+            <div class="container">
                 <a class="navbar-brand" href="{% url 'home' %}">
                     <span class="brand">C<span class="red-o">lo</span>ne<span class="thin">|Reddit</span></span>
                 </a>
@@ -51,9 +51,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
-                        </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>

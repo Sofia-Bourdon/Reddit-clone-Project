@@ -19,6 +19,7 @@ a {
 
 a:hover {
     background-color: #F9FAFC;
+    text-decoration: none;
 }
 
 /* Customize the font */
@@ -178,13 +179,11 @@ a:hover {
 
 .upvote-btn {
     color: #B8B8B8;
-    background-color: #F9FAFC;
     border-style: none;
 }
 
 .downvote-btn {
     color: #B8B8B8;
-    background-color: #F9FAFC;
     border-style: none;
 }
 
