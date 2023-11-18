@@ -1,106 +1,110 @@
-/* Override Bootstrap container styles */
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 15px;
-  }
-  
-  /* Remove default link styles */
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  a:hover {
+html, body {
+    height: 100%; /* This should be set to allow the body to be a flex container */
+    margin: 0; /* Reset default margin */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Remove default link styles */
+a {
+text-decoration: none;
+color: inherit;
+}
+
+a:hover {
     background-color: #F9FAFC;
-  }
-  
-  /* Customize the font */
-  .brand {
+}
+
+/* Customize the font */
+.brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
     color: #4A4A4F;
-  }
-  
-  .red-o {
+}
+
+.red-o {
     color: #D13120;
-  }
-  
-  .thin {
+}
+
+.thin {
     font-weight: 300;
-  }
-  
-  /* Set light and dark background colors */
-  .light-bg {
+}
+
+/* Set light and dark background colors */
+.light-bg {
     background-color: #fff;
-  }
-  
-  .dark-bg {
+}
+
+.dark-bg {
     background-color: #445261;
     color: #fff; /* Set text color for dark background */
-  }
-  
-  /* Background color for the main section */
-  .main-bg {
+}
+
+/* Background color for the main section */
+.main-bg {
     background-color: #F9FAFC;
-  }
-  
-  .post-open {
+    flex-grow: 1;
+}
+
+.post-open {
     background-color: white;
     padding: 3%;
-  }
-  
-  .card {
+}
+
+.card {
     border: none;
     background-color: transparent;
-  }
-  
-  .post-card {
+}
+
+.post-card {
     background-color: white;
     margin-top: 3%;
     padding: 3%;
-  }
-  
-  .image-container {
+}
+
+.image-container {
     position: relative;
-  }
-  
-  .image-flash {
+}
+
+.image-flash {
     position: absolute;
     bottom: 5%;
     min-width: 30%;
     left: -2px;
     background-color: #23BBBB;
-  }
-  
-  .author {
+}
+
+.author {
     color: white;
     margin: 4px;
     text-transform: uppercase;
-  }
-  
-  .masthead {
+}
+
+.masthead {
     margin-top: 10px;
     overflow: hidden;
     position: relative;
     display: inline-block;
     height: 33vh;
     width: 100%;
-  }
-  
-  .masthead-text {
+}
+
+.masthead-text {
     background-color: #445261;
     color: white;
     position: relative;
-  }
-  
-  .masthead-image {
+}
+
+.masthead-image {
     position: relative;
     overflow: hidden;
-  }
-  
-  .masthead-image:after {
+}
+
+.masthead-image:after {
     content: "";
     position: absolute;
     top: 0;
@@ -112,118 +116,120 @@
     -moz-transform: skew(15deg);
     transform: skew(15deg);
     z-index: 100;
-  }
-  
-  /* Style the post link and page link */
-  .post-link,
-  .page-link {
+}
+
+/* Style the post link and page link */
+.post-link,
+.page-link {
     color: #445261;
     text-decoration: none;
-  }
-  
-  
-  .post-title {
+}
+
+
+.post-title {
     margin-top: 5%;
-  }
-  
-  .post-subtitle {
+}
+
+.post-subtitle {
     margin-left: 5%;
     color: lightgray;
-  }
-  
-  /* Style the signup button */
-  .btn-signup {
+}
+
+/* Style the signup button */
+.btn-signup {
     background-color: white;
     color: #339966;
     border: 1px dotted #339966;
     font-weight: 500;
-  }
-  
-  .btn-signup:hover,
-  .btn-signup:active {
+}
+
+.btn-signup:hover,
+.btn-signup:active {
     background-color: #339966;
     color: white;
-  }
-  
-  .btn-signout {
+}
+
+.btn-signout {
     background-color: #D7DBDD;
-  }
-  
-  .btn-signout:hover,
-  .btn-signup:active {
+}
+
+.btn-signout:hover,
+.btn-signup:active {
     font-weight: 500;
     color: #CC3300;
     border: 1px dotted #CC3300;
-  }
-  
-  .link {
+}
+
+.link {
     color: #339966;;
     text-decoration: none;
-  }
-  
-  .link:hover,
-  .link:active {
+}
+
+.link:hover,
+.link:active {
     color: #445261;
     text-decoration: none;
-  }
-  
-  .upvote-btn {
+}
+
+.upvote-btn {
     color:	#B8B8B8;
     background-color: #F9FAFC;
     border-style: none;
-  }
-  
-  .downvote-btn {
+}
+
+.downvote-btn {
     color: #B8B8B8;
     background-color: #F9FAFC;
     border-style: none;
-  }
-  
-  /* Upvote button */
-  .upvote-btn.active {
+}
+
+/* Upvote button */
+.upvote-btn.active {
     color: green;
     border-color: #F9FAFC;
-  }
-  
-  /* Downvote button */
-  .downvote-btn.active {
+}
+
+/* Downvote button */
+.downvote-btn.active {
     color: red;
     border-color: none;
-  }
-  
-  .comment-button {
+}
+
+.comment-button {
     border: 3px solid #6495ED;
     background-color: #91B2EC;
     color: white;
     font-weight: 500;
-  }
-  
-  .footer {
-    background-color: #F2F4F4;
-  }
-  
-  /* Subreddits list toggle */
-  .subreddits-toggle {
-    display: none;
-  }
-  
+}
 
-  @media (max-width: 767.98px) {
-    .subreddits-desktop {
-      display: none;
-    }
-  
-    .subreddits-mobile {
-      display: block;
-    }
-  }
-  
-  @media (min-width: 768px) {
-    .subreddits-desktop {
-      display: block;
-    }
-  
-    .subreddits-mobile {
-      display: none;
-    }
-  }
+.footer {
+    background-color: #F2F4F4;
+    width: 100%;
+
+}
+
+/* Subreddits list toggle */
+.subreddits-toggle {
+display: none;
+}
+
+
+@media (max-width: 767.98px) {
+.subreddits-desktop {
+    display: none;
+}
+
+.subreddits-mobile {
+    display: block;
+}
+}
+
+@media (min-width: 768px) {
+.subreddits-desktop {
+    display: block;
+}
+
+.subreddits-mobile {
+    display: none;
+}
+}

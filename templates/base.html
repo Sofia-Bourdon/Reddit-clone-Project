@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html class="h-100">
+<html>
 
 <head>
     {% block meta %}
@@ -38,8 +38,8 @@
 
     <header class="container-fluid">
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
-            <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white p-2">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'home' %}">
                     <span class="brand">C<span class="red-o">lo</span>ne<span class="thin">|Reddit</span></span>
                 </a>
@@ -87,9 +87,11 @@
     {% endif %}
 
     <main class="flex-grow-1 main-bg">
+        <div class="container-fluid py-3">
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
+        </div>
     </main>
 
 
