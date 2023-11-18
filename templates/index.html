@@ -17,7 +17,7 @@
                                     <h6 class="subreddit-id">{{ post.subreddit }}</h6>
                                     <div class="post-header">
                                         {% if post.image %}
-                                            <img src="{{ post.image.url }}" class="card-img-top" alt="Post Image">
+                                        <img src="{{ post.image.url }}" class="card-img-top" alt="Post Image">
                                         {% endif %}
                                         <div class="card-body">
                                             <h5 class="card-title">{{ post.title }}</h5>
@@ -39,14 +39,16 @@
                     <div class="subreddits-list col-md-4">
                         <h5>Subreddits</h5>
                         <ul class="list-group-subreddits">
-                        {% for subreddit in subreddits %}
-                            <li class="list-group-item"><a href="{% url 'subreddit' subreddit.slug %}">{{ subreddit.name }}</a>
-                        {% endfor %}
+                            {% for subreddit in subreddits %}
+                            <li class="list-group-item">
+                                <a href="{% url 'subreddit' subreddit.slug %}">{{ subreddit.name }}</a>
+                            </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
     </div>
 </div>
 

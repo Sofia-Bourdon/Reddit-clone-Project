@@ -1,6 +1,9 @@
-html, body {
-    height: 100%; /* This should be set to allow the body to be a flex container */
-    margin: 0; /* Reset default margin */
+html,
+body {
+    height: 100%;
+    /* This should be set to allow the body to be a flex container */
+    margin: 0;
+    /* Reset default margin */
 }
 
 body {
@@ -10,8 +13,8 @@ body {
 
 /* Remove default link styles */
 a {
-text-decoration: none;
-color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 a:hover {
@@ -41,7 +44,8 @@ a:hover {
 
 .dark-bg {
     background-color: #445261;
-    color: #fff; /* Set text color for dark background */
+    color: #fff;
+    /* Set text color for dark background */
 }
 
 /* Background color for the main section */
@@ -161,7 +165,8 @@ a:hover {
 }
 
 .link {
-    color: #339966;;
+    color: #339966;
+    ;
     text-decoration: none;
 }
 
@@ -172,7 +177,7 @@ a:hover {
 }
 
 .upvote-btn {
-    color:	#B8B8B8;
+    color: #B8B8B8;
     background-color: #F9FAFC;
     border-style: none;
 }
@@ -210,26 +215,26 @@ a:hover {
 
 /* Subreddits list toggle */
 .subreddits-toggle {
-display: none;
+    display: none;
 }
 
 
 @media (max-width: 767.98px) {
-.subreddits-desktop {
-    display: none;
-}
+    .subreddits-desktop {
+        display: none;
+    }
 
-.subreddits-mobile {
-    display: block;
-}
+    .subreddits-mobile {
+        display: block;
+    }
 }
 
 @media (min-width: 768px) {
-.subreddits-desktop {
-    display: block;
-}
+    .subreddits-desktop {
+        display: block;
+    }
 
-.subreddits-mobile {
-    display: none;
-}
+    .subreddits-mobile {
+        display: none;
+    }
 }
