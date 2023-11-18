@@ -1,4 +1,5 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
@@ -14,12 +15,14 @@
                             {% if user.is_authenticated %}
                             <form method="POST">
                                 {% csrf_token %}
-                                <button type="submit" name="upvote" class="upvote-btn {% if user in post.upvotes.all %}active{% endif %}">
-                                    <i class="fa-solid fa-up fa-lg"></i>
+                                <button type="submit" name="upvote"
+                                    class="upvote-btn {% if user in post.upvotes.all %}active{% endif %}">
+                                    <i class="fa-solid fa-arrow-up"></i>
                                 </button>
-                                <button type="submit" name="downvote" class="downvote-btn {% if user in post.downvotes.all %}active{% endif %}">
-                                    <i class="fa-solid fa-down fa-lg"></i>
-                                </button>                                
+                                <button type="submit" name="downvote"
+                                    class="downvote-btn {% if user in post.downvotes.all %}active{% endif %}">
+                                    <i class="fa-solid fa-arrow-down"></i>
+                                </button>
                             </form>
                             {% endif %}
                             {% if post.author == request.user %}
@@ -47,8 +50,8 @@
                     <span class="comment-count">{{ post.comments.count }} comments</span>
                 </div>
             </div>
-            
-    
+
+
             <div class="comments-section">
                 <h4>Comments:</h4>
                 {% for comment in comments %}
