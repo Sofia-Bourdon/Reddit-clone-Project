@@ -33,7 +33,7 @@
                                     <div class="row">
                                         <div class="col-auto">
                                             <div class="row votes">
-                                                {% if user.is_authenticated %}
+                                                <!-- {% if user.is_authenticated %} -->
                                                 <form method="POST">
                                                     {% csrf_token %}
                                                     <div class="col text-center">
@@ -52,7 +52,7 @@
                                                         </button>
                                                     </div>
                                                 </form>
-                                                {% endif %}
+                                                <!-- {% endif %} -->
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-6 col-md-8">
