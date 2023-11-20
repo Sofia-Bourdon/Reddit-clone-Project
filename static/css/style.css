@@ -34,8 +34,9 @@ a:hover {
     color: #D13120;
 }
 
-.thin {
-    font-weight: 300;
+.comment-form textarea {
+    width: 50%;
+    height: 15%;
 }
 
 /* Set light and dark background colors */
@@ -55,10 +56,6 @@ a:hover {
     flex-grow: 1;
 }
 
-.post-open {
-    background-color: white;
-    padding: 3%;
-}
 
 .card {
     border: none;

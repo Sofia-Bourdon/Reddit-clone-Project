@@ -19,21 +19,21 @@ class PostList(generic.ListView):
 @login_required
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    approved_comments = post.comments.filter(approved=True).order_by('created_on')
-    form = CommentForm()
+    approved_comments = post.comments.filter(
+        approved=True).order_by('created_on')
+    subreddits = Subreddit.objects.all()  # Get all subreddits
+    form = CommentForm(request.POST or None)
 
     if request.method == 'POST':
         if 'upvote' in request.POST:
             handle_upvote(request, post)
         elif 'downvote' in request.POST:
             handle_downvote(request, post)
-        else:
-            form = CommentForm(request.POST)
-            if form.is_valid():
-                comment = form.save(commit=False)
-                comment.post = post
-                comment.save()
-                return redirect('post_detail', pk=post.pk)
+        elif form.is_valid():  # This will only run if the form is valid
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('post_detail', pk=post.pk)
 
     return render(
         request,
@@ -42,6 +42,7 @@ def post_detail(request, pk):
             'post': post,
             'comments': approved_comments,
             'comment_form': form,
+            'subreddits': subreddits,  # Add 'subreddits' to the context
         },
     )
 
@@ -80,7 +81,7 @@ def comment_post(request, slug):
     else:
         form = CommentForm()
     return render(request, 'post_detail.html', {'form': form})
-    
+
 
 @login_required
 def subreddit(request, slug):
