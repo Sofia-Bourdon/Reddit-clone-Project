@@ -9,10 +9,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <!-- Create post button -->
                 <button id="newPostButton" class="btn btn-primary">Create Post</button>
                 <div id="newPostForm" style="">
                     <div class="content-section">
-                        <!-- In index.html -->
                         <form method="POST" action="{% url 'make_new_post' %}">
                             {% csrf_token %}
                             {{ post_form|crispy }}

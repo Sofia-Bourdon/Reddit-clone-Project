@@ -1,14 +1,25 @@
 {% extends "base.html" %}
 
-{% block content %}
-
 {% load crispy_forms_tags %}
+
+{% block content %}
 
 <div class="container">
     <div class="row">
         <div class="col-md-8">
             <h2>Welcome to {{ subreddit.name }}</h2>
             <p>{{ subreddit.description }}</p>
+            <!-- Create post button -->
+            <button id="newPostButton" class="btn btn-primary">Create Post</button>
+            <div id="newPostForm" style="">
+                <div class="content-section">
+                    <form method="POST" action="{% url 'make_new_post' %}">
+                        {% csrf_token %}
+                        {{ post_form|crispy }}
+                        <button type="submit" class="btn btn-primary">Create Post</button>
+                    </form>
+                </div>
+            </div>
             <div class="post-list">
                 {% for post in posts %}
                 <!-- card showcasing the post  -->
@@ -79,18 +90,6 @@
                 </a>
                 {% endfor %}
             </div>
-            <div class="content-section">
-                <form method="POST">
-                    {% csrf_token %}
-                    <fieldset class="form-group">
-                        <legend class="border-bottom mb-4">Add a Post:</legend>
-                        {{ form|crispy }}
-                    </fieldset>
-                    <div class="form-group">
-                        <button class="btn btn-outline-info" type="submit">Post</button>
-                    </div>
-                </form>
-            </div>
         </div>
         <!-- subreddits section -->
         <div class="subreddits-list col-md-4 mt-4">
@@ -104,5 +103,16 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    document.getElementById('newPostButton').addEventListener('click', function () {
+        var form = document.getElementById('newPostForm');
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    });
+</script>
 
 {% endblock %}

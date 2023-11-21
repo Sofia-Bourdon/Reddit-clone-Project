@@ -106,7 +106,7 @@ def subreddit(request, slug):
         'subreddit.html',
         {
             'subreddit': subreddit,
-            'form': form,
+            'post_form': form,
             'posts': posts,
             'subreddits': subreddits,
         },
