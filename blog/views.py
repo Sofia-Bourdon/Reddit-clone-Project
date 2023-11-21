@@ -13,6 +13,7 @@ class PostList(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['subreddits'] = Subreddit.objects.all()
+        context['post_form'] = PostForm()
         return context
 
 
@@ -112,21 +113,17 @@ def subreddit(request, slug):
     )
 
 
-def make_new_post(request, slug):
-    post = get_object_or_404(Post, slug=slug)
+@login_required
+def make_new_post(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            new.post = post
-            post.author = request.user
-            post.subreddit = subreddit
-            post.status = STATUS_CHOICES[1]
-            post.save()
-            return redirect('subreddit.html', pk=post.pk)
+            new_post = form.save(commit=False)
+            new_post.author = request.user
+            new_post.save()
+            return redirect('post_detail', pk=new_post.pk)
     else:
-        form = PostForm()
-    return render(request, 'post.html', {'form': form})
+        return redirect('home')  # Redirect to home if accessed directly
 
 
 def delete_post(request, slug):
