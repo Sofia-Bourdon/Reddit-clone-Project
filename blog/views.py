@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Post, Subreddit
 from .forms import CommentForm, PostForm
@@ -36,6 +37,8 @@ def post_detail(request, pk):
             comment.save()
             return redirect('post_detail', pk=post.pk)
 
+    edit_form = PostForm(instance=post)
+
     return render(
         request,
         'post_detail.html',
@@ -43,7 +46,8 @@ def post_detail(request, pk):
             'post': post,
             'comments': approved_comments,
             'comment_form': form,
-            'subreddits': subreddits,  # Add 'subreddits' to the context
+            'edit_form': edit_form,
+            'subreddits': subreddits,
         },
     )
 
@@ -135,15 +139,18 @@ def delete_post(request, slug):
 
 @login_required
 def edit_post(request, pk):
+    """ A view to allow the user to edit his own post"""
     post = get_object_or_404(Post, pk=pk)
     if post.author == request.user and request.method == 'POST':
-        form = PostForm(request.POST, instance=post)
-        if form.is_valid():
-            form.save()
+        edit_form = PostForm(request.POST, instance=post)
+        if edit_form.is_valid():
+            edit_form.save()
             messages.success(request, 'Post updated successfully!')
             return redirect('post_detail', pk=pk)
+        else:
+            messages.error(
+                request, 'Failed to update post. Please try again.')
     else:
-        form = PostForm(instance=post)
+        edit_form = PostForm(instance=post)
 
-    return render(request, 'post_detail.html', {'form': form, 'post': post})
-
+    return render(request, 'post_detail.html', {'edit_form': edit_form, 'post': post})

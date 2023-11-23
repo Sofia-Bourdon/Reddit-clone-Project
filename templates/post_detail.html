@@ -14,14 +14,22 @@
                         <div class="col">
                             <h6 class="subreddit-id">{{ post.subreddit }}</h6>
                         </div>
+                        {% if post.author == request.user %}
+                        <button class="btn" id="editPostButton" onclick="toggleEditForm()">Edit Post</button>
+                        <div id="editForm" style="display: none;">
+                            <form method="POST" action="{% url 'edit_post' pk=post.pk %}">
+                                {% csrf_token %}
+                                {{ edit_form|crispy }}
+                                <button class="btn" type="submit">Save Changes</button>
+                            </form>
+                        </div>
                         <div class="col d-flex justify-content-end">
-                            {% if post.author == request.user %}
                             <form method="POST" action="{% url 'delete_post' post.slug %}">
                                 {% csrf_token %}
                                 <button class="btn" type="submit">Delete Post</button>
                             </form>
-                            {% endif %}
                         </div>
+                        {% endif %}
                     </div>
                     <!-- Upvote and downvote buttons section -->
                     <div class="row">
@@ -120,6 +128,16 @@
         alert('Your comment is awaiting approval');
         commentForm.submit();
     });
+
+    function toggleEditForm() {
+        console.log("Toggle function called");
+        var form = document.getElementById("editForm");
+        if (form.style.display === "none") {
+            form.style.display = "inline";
+        } else {
+            form.style.display = "none";
+        }
+    }
 </script>
 
 {% endblock %}
