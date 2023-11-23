@@ -123,7 +123,7 @@ def make_new_post(request):
             new_post.save()
             return redirect('post_detail', pk=new_post.pk)
     else:
-        return redirect('home')  # Redirect to home if accessed directly
+        return redirect('home')
 
 
 def delete_post(request, slug):
@@ -131,3 +131,19 @@ def delete_post(request, slug):
     if post.author == request.user and request.method == 'POST':
         post.delete()
     return redirect('home')
+
+
+@login_required
+def edit_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if post.author == request.user and request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Post updated successfully!')
+            return redirect('post_detail', pk=pk)
+    else:
+        form = PostForm(instance=post)
+
+    return render(request, 'post_detail.html', {'form': form, 'post': post})
+

@@ -9,4 +9,5 @@ urlpatterns = [
     path('<slug:slug>/', views.comment_post, name='comment_post'),
     path('r/<slug:slug>/', views.subreddit, name='subreddit'),
     path('delete-post/<slug:slug>/', views.delete_post, name='delete_post'),
+    path('edit-post/<int:pk>/', views.edit_post, name='edit_post'),
 ]
