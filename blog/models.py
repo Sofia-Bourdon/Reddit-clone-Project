@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
 
 STATUS_CHOICES = (
@@ -47,6 +48,11 @@ class Subreddit(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super(Subreddit, self).save(*args, **kwargs)
+
 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
@@ -79,6 +85,11 @@ class Post(models.Model):
 
     def total_votes(self):
         return self.number_of_upvotes() - self.number_of_downvotes()
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(Post, self).save(*args, **kwargs)
 
 
 class Comment(models.Model):
