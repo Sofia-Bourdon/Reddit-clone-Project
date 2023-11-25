@@ -10,8 +10,8 @@
         <div class="row">
             <div class="col-md-12">
                 <!-- Create post button -->
-                <button id="newPostButton" class="btn btn-primary"
-                    onclick="toggleForm('newPostButton', 'newPostForm')">Create Post</button>
+                <button id="newPostButton" class="btn" onclick="toggleForm('newPostButton', 'newPostForm')">Create
+                    Post</button>
                 <div id="newPostForm" style="display: none;">
                     <div class="content-section">
                         <form method="POST" action="{% url 'make_new_post' %}">
