@@ -21,7 +21,7 @@ class CommentForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'content', 'slug', 'subreddit')
+        fields = ('title', 'content', 'subreddit')
 
     def __init__(self, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
@@ -29,7 +29,6 @@ class PostForm(forms.ModelForm):
         self.helper.layout = Layout(
             Field('title', css_class='form-control'),
             Field('content', css_class='form-control'),
-            Field('slug', css_class='form-control'),
             Field('subreddit', css_class='form-control'),
             Submit('submit', 'Submit Post', css_class='btn btn-primary mt-2')
         )
