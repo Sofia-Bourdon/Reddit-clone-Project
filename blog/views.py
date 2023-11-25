@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Post, Subreddit
-from .forms import CommentForm, PostForm
+from .models import Post, Subreddit, Profile, UserActivity
+from .forms import CommentForm, PostForm, ProfileForm
 
 
 class PostList(generic.ListView):
@@ -154,3 +154,25 @@ def edit_post(request, pk):
         edit_form = PostForm(instance=post)
 
     return render(request, 'post_detail.html', {'edit_form': edit_form, 'post': post})
+
+
+@login_required
+def profile(request):
+    Profile.objects.get_or_create(user=request.user)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES,
+                           instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileForm(instance=request.user.profile)
+
+    activities = UserActivity.objects.filter(
+        user=request.user).order_by('-timestamp')
+
+    context = {
+        'form': form,
+        'activities': activities
+    }
+    return render(request, 'profile.html', context)
