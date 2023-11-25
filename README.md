@@ -70,7 +70,10 @@ User stories are critical to ensuring that the functionality of the Reddit Clone
 
 
 ### Database Schema
-The database schema outlines the relationships between users, posts, comments, and subreddits, ensuring efficient data management and retrieval.
+The database schema  was generated using dbdiagram.io. It outlines the relationships between users, posts, comments, and subreddits, ensuring efficient data management and retrieval.
+
+![databasediagram](https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/7debb626-5eef-44fc-8246-436e98ee3ee6)
+
 
 ## UX Planning
 ### Wireframes
