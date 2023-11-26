@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Post, Subreddit, Profile, UserActivity
+from .models import Post, Subreddit, Profile, UserActivity, Comment
 from .forms import CommentForm, PostForm, ProfileForm
 
 
@@ -95,6 +95,15 @@ def comment_post(request, slug):
     else:
         form = CommentForm()
     return render(request, 'post_detail.html', {'form': form})
+
+
+def delete_comment(request, pk):
+    """Allow users to delete their own posts."""
+    comment = get_object_or_404(comment, pk=pk)
+    if comment.author == request.user and request.method == 'POST':
+        comment.delete()
+        messages.success(request, 'Your comment was successfully deleted!')
+    return redirect('home')
 
 
 @login_required

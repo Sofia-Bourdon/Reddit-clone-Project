@@ -7,6 +7,7 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('post/<int:pk>/', views.post_detail, name='post_detail'),
     path('<slug:slug>/', views.comment_post, name='comment_post'),
+    path('delete_comment/<int:pk>/', views.delete_comment, name='delete_comment'),
     path('r/<slug:slug>/', views.subreddit, name='subreddit'),
     path('delete-post/<slug:slug>/', views.delete_post, name='delete_post'),
     path('edit-post/<int:pk>/', views.edit_post, name='edit_post'),
