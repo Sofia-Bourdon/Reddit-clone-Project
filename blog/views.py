@@ -211,3 +211,8 @@ def profile(request):
             'posts': posts,
         },
     )
+
+
+def custom_404(request, exception):
+    """Display a custom 404 page"""
+    return render(request, '404.html', status=404)
