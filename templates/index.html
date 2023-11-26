@@ -35,6 +35,15 @@
                                         </div>
                                         <div class="col d-flex justify-content-end">
                                             {% if post.author == request.user %}
+                                            <button class="btn" id="editPostButton" onclick="toggleEditForm()">Edit
+                                                Post</button>
+                                            <div id="editForm" style="display: none;">
+                                                <form method="POST" action="{% url 'edit_post' pk=post.pk %}">
+                                                    {% csrf_token %}
+                                                    {{ edit_form|crispy }}
+                                                    <button class="btn" type="submit">Save Changes</button>
+                                                </form>
+                                            </div>
                                             <form method="POST" action="{% url 'delete_post' post.slug %}">
                                                 {% csrf_token %}
                                                 <button class="btn" type="submit">Delete Post</button>

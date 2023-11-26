@@ -10,15 +10,14 @@
             <h2>Welcome to {{ subreddit.name }}</h2>
             <p>{{ subreddit.description }}</p>
             <!-- Create post button -->
-            <button id="newPostButton" class="btn btn-primary"
-                onclick="toggleForm('newPostButton', 'newPostForm')">Create
+            <button id="newPostButton" class="btn" onclick="toggleForm('newPostButton', 'newPostForm')">Create
                 Post</button>
             <div id="newPostForm" style="display: none;">
                 <div class="content-section">
                     <form method="POST" action="{% url 'make_new_post' %}">
                         {% csrf_token %}
                         {{ post_form|crispy }}
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-secondary">Submit</button>
                     </form>
                 </div>
             </div>
@@ -33,6 +32,14 @@
                             </div>
                             <div class="col d-flex justify-content-end">
                                 {% if post.author == request.user %}
+                                <button class="btn" id="editPostButton" onclick="toggleEditForm()">Edit Post</button>
+                                <div id="editForm" style="display: none;">
+                                    <form method="POST" action="{% url 'edit_post' pk=post.pk %}">
+                                        {% csrf_token %}
+                                        {{ edit_form|crispy }}
+                                        <button class="btn" type="submit">Save Changes</button>
+                                    </form>
+                                </div>
                                 <form method="POST" action="{% url 'delete_post' post.slug %}">
                                     {% csrf_token %}
                                     <button class="btn" type="submit">Delete Post</button>
