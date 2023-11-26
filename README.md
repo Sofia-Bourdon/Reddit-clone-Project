@@ -116,65 +116,111 @@ Here are the primary colors used in the design:
 * Secure authentication system to protect user accounts.
 
 ### Homepage and Navigation
-* The homepage showcases a feed of the most popular posts based on the upvotes to downvotes ratio.
-* All the subreddits are displayed on the sidebar.
+
+The homepage of Clone|Reddit serves as the central hub for user interaction and content discovery. Here's what users will find:
+
+- **Navigation Header**: At the top, users are greeted with the Clone|Reddit logo and options for profile access and logging out, providing a clear path to account management.
+  
+- **Create Post**: Users are invited to contribute to the community with an easily accessible 'Create Post' button, that opens the form to create a brand new post.
+  
+- **Post List**: The main area displays a list of posts, where users can:
+  - Quickly view the post title, subreddit association, and content.
+  - Interact with posts through upvote and downvote buttons, visually represented by upward and downward arrows.
+  - See the post's comment count and timestamp, giving context to the activity level and recency.
+  - Utilize 'Edit Post' and 'Delete Post' options for their own posts, allowing for straightforward content management.
+  
+- **Subreddit Navigation**: A sidebar offers quick access to various subreddits like r/FirstUsers, simplifying the exploration of different topics.
+
 
 ### Making Posts and Comments
-* Intuitive interface for post creation within user-selected subreddits.
-* Facilitated discussions through a robust commenting system.
+* Our platform encourages active participation and content creation from our user community. By clicking on the 'Create Post' button, accessible both from the homepage and within each subreddit page, users are presented with a straightforward form. This form is the gateway to sharing new ideas, stories, or discussions.
+
+The form fields are concise, requiring:
+- **Title**: A catchy heading for the post.
+- **Content**: The main body of the post where users can express their thoughts, share information, or ask questions.
+- **Subreddit**: A dropdown to select which subreddit the post belongs to, making sure the content reaches the right audience.
+
+After filling out the form, users can hit 'Submit' to instantly share their new post with the community. Alternatively, if they change their mind or need to go back, a 'Close' button is also available to exit the form without posting.
+
+Within the detailed view of each post, a comment form is placed at the bottom of the page. This feature allows users to share their thoughts and engage directly with the content.
+
+Here's how it works:
+- **Comment Form**: Users can find a simple form to submit their comments, promoting an active dialogue related to the post.
+- **Feedback Message**: Upon submitting the comment, users will immediately receive a confirmation message, acknowledging their participation.
+- **Review Process**: To maintain the quality of discussions, each comment is placed in a review queue within the admin panel. Once reviewed and approved by an admin, the comment will become visible to all users under the post.
+
 
 ## Subreddits
 
+Subreddits are the cornerstone of our platform, acting as dedicated spaces for specific topics or discussions. They are carefully curated and established by administrators through the admin panel, ensuring that each subreddit serves a distinct purpose and upholds community standards.
+
+Here's what users can expect when accessing a subreddit:
+
+- **Subreddit Header**: At the top of each subreddit page, users are greeted by the subreddit's name, prominently displayed. This serves as a clear indication of the community theme and topic.
+
+- **Introductory Paragraph**: Beneath the header, there's a brief introductory text. This paragraph provides users with context about the subreddit, guidelines, or any welcoming messages from the moderators.
+
+- **Posts Listing**: The main area of the subreddit page presents a list of posts that have been created under this subreddit. Users can browse through these posts, which fosters engagement and interaction within the subreddit's community.
+
+
 ## User Profile
+
+Upon successful registration, each user gains access to a personal profile to showcase their individuality and contributions on the platform. The profile link, conveniently located in the navigation bar, directs users to their profile page.
+
+Here's the composition of the User Profile page:
+
+- **Profile Picture**: Positioned on the left side, the profile section starts with a profile picture. A default avatar is provided initially, and users have the option to personalize their profile by adding their own picture. This can be done by clicking on the edit icon, which appears above the profile information within the page.
+
+- **Bio**: Below the profile picture, users have a space to write a bio. This personal touch allows users to introduce themselves to the community or share any details they find pertinent.
+
+- **Posts Overview**: On the right side of the profile page, there's a dedicated area that lists all the posts made by the user. This personal log of activity not only highlights the user's contributions but also provides quick access to their content. Each post comes with 'Edit' and 'Delete' options, giving users control over their shared content.
 
 ### Admin Panel and Content Moderation
 
-<img width="1512" alt="Screenshot 2023-06-30 at 09 26 25" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/8d983e7e-5769-49b3-8ea1-d507f1466958">
+The backbone of the platform's content governance is the robust admin panel, which grants administrators comprehensive control over the site's content. This includes the ability to oversee and manage posts, comments, subreddits, and user profiles (planned for future implementation).
 
-* A registered admin (superuser) can access the admin panel where all posts, comments, subreddits, and profiles (future) can be edited or deleted.
+![Admin Panel Posts](https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/8d983e7e-5769-49b3-8ea1-d507f1466958)
 
-<img width="1510" alt="Screenshot 2023-06-30 at 09 34 03" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/ede8ea3e-a2c5-4004-99b2-ca59458fdaf3">
+Administrators can utilize powerful filters to sort posts by status or creation date and employ a search function for quick access. The creation of new content is streamlined through an 'Add Post +' button, and the ability to toggle post status from 'Draft' to 'Published' ensures only quality content is displayed.
 
-<img width="1510" alt="Screenshot 2023-06-30 at 09 34 03" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/ede8ea3e-a2c5-4004-99b2-ca59458fdaf3">
+![Admin Panel Comments](https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/ede8ea3e-a2c5-4004-99b2-ca59458fdaf3)
 
-* Posts can be filtered by their 'status' and 'created on' or searched on the search bar for easier access.
-* A new post can also be made by an admin by clicking 'add post +'.
-* Admins can edit and change the status of posts (from 'Draft' to 'Published' and vice versa) which allows the posts made by users to be displayed on the homepage. 
+The 'Comments' section mirrors this functionality, allowing for meticulous moderation. User-generated comments are queued for admin review, ensuring that only appropriate content is made public, while admins can also contribute to the discourse directly.
 
-<img width="1509" alt="Screenshot 2023-06-30 at 09 42 19" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/aa993318-0204-4c7a-8d26-5960f4bb0914">
+![Admin Panel Subreddits](https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/aa993318-0204-4c7a-8d26-5960f4bb0914)
 
-* Comments can also be moderated by admins by clicking the 'Comments' section on the admin panel.
-* Similarly to the 'Posts' section the 'Comments' allows all comments to be filtered for easier access.
-* All comments made by users must be approved by admins before displaying under a post.
-* Admins can also make new comments by clicking on the 'Add Comment +' button.
-
-<img width="1509" alt="Screenshot 2023-06-30 at 09 47 19" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/6f367407-9311-47c7-b967-56cd7e9414d4">
-
-* The 'Subreddits' section allows registered admins to filter, edit and delete subreddits.
-* New subreddits can only be created by admins through the admin panel by clicking on 'Add Subreddit.
+Subreddit management is an exclusive admin privilege, with capabilities to filter, edit, and curate these community spaces. This control ensures that the platform remains organized and aligned with the community's interests and guidelines.
 
 ### Future Enhancements
-* Introduction of friend requests and direct messaging.
-* Advanced search and sorting functionalities.
-* Enhanced moderation tools for community guideline enforcement.
+
+Looking ahead, we are committed to evolving our platform to enhance user connectivity and content management. Planned upgrades include:
+
+- The rollout of friend requests and direct messaging to foster personal connections within the community.
+- Advanced search features and sorting options to streamline content discovery.
+- Sophisticated moderation tools to uphold and enforce community guidelines more effectively.
 
 ## Testing and Deployment
-* Extensive testing covering accessibility, performance, and best practices.
-* Iterative development with manual and automated testing to ensure functionality.
-* The app tested high in accessibility, performance, and best practices.
 
-<img width="599" alt="Screenshot 2023-06-29 at 22 50 10 1" src="https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/596165f3-d954-465b-a537-c99986e2a532">
+Key functionalities of the application underwent functional testing to ensure reliable operation. The platform has been deployed to Heroku, streamlining the deployment process for this Django application. Essential configuration for Heroku deployment was implemented, and the application is now live on Heroku's cloud platform.
+
+The Lighthouse performance results below showcase the application's performance metrics:
+
+![Lighthouse Performance Results](https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/596165f3-d954-465b-a537-c99986e2a532)
+
 
 ## Credits
+
 ### Acknowledgments
-* Special thanks to mentor Akshat Garg and the Code Institute's tutor team.
-* Gratitude to online communities like Stack Overflow for their invaluable support.
-* Recognition of various resources and documentation that guided the project's development.
+Special thanks to mentor Akshat Garg and the tutors at the Code Institute for their guidance throughout this project.
+
+Appreciation is also extended to the communities on platforms like Stack Overflow for their assistance and shared knowledge, which were valuable in the development process.
 
 ### Sources
-* The following websites were consulted for additional information and guidance:
-https://djangocentral.com/creating-comments-system-with-django/
-https://stackoverflow.com/questions/21123559/django-redirect-all-non-authenticated-users-to-landing-page
-https://docs.djangoproject.com/en/4.2/ref/models/fields/
-https://django-crispy-forms.readthedocs.io/en/latest/index.html
-https://www.devhandbook.com/django/user-profile/
+Useful resources and guidance were found at the following:
+- [Django Central: Creating a Comments System with Django](https://djangocentral.com/creating-comments-system-with-django/)
+- [Stack Overflow: Django Redirect for Non-Authenticated Users](https://stackoverflow.com/questions/21123559/django-redirect-all-non-authenticated-users-to-landing-page)
+- [Django Official Documentation](https://docs.djangoproject.com/en/4.2/ref/models/fields/)
+- [Django Crispy Forms Documentation](https://django-crispy-forms.readthedocs.io/en/latest/index.html)
+- [Developer Handbook: Django User Profile](https://www.devhandbook.com/django/user-profile/)
+- https://codinggear.blog/how-to-register-model-in-django-admin/?utm_content=cmp-true
+- https://www.makeuseof.com/create-custom-404-error-page-django/
