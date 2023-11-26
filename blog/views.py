@@ -7,6 +7,7 @@ from .forms import CommentForm, PostForm, ProfileForm
 
 
 class PostList(generic.ListView):
+    """Display an organized list of posts that are published."""
     model = Post
     queryset = Post.objects.filter(status=1).order_by('upvotes')
     template_name = 'index.html'
@@ -20,6 +21,7 @@ class PostList(generic.ListView):
 
 @login_required
 def post_detail(request, pk):
+    """Show details for a single post, including comments and voting."""
     post = get_object_or_404(Post, pk=pk)
     approved_comments = post.comments.filter(
         approved=True).order_by('created_on')
@@ -53,6 +55,7 @@ def post_detail(request, pk):
 
 
 def handle_upvote(request, post):
+    """Process an upvote for a post."""
     if request.user.is_authenticated:
         if request.user in post.upvotes.all():
             post.upvotes.remove(request.user)
@@ -64,6 +67,7 @@ def handle_upvote(request, post):
 
 
 def handle_downvote(request, post):
+    """Process a downvote for a post."""
     if request.user.is_authenticated:
         if request.user in post.downvotes.all():
             post.downvotes.remove(request.user)
@@ -75,6 +79,7 @@ def handle_downvote(request, post):
 
 
 def comment_post(request, slug):
+    """Allow users to comment on a post."""
     post = get_object_or_404(Post, slug=slug)
     if request.method == "POST":
         form = CommentForm(request.POST)
@@ -93,6 +98,7 @@ def comment_post(request, slug):
 
 @login_required
 def subreddit(request, slug):
+    """Show posts for a specific subreddit and allow new post submissions."""
     subreddit = get_object_or_404(Subreddit, slug=slug)
     posts = Post.objects.filter(subreddit=subreddit)
     subreddits = Subreddit.objects.all()
@@ -122,6 +128,7 @@ def subreddit(request, slug):
 
 @login_required
 def make_new_post(request):
+    """Provide a form for submitting a new post."""
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -136,6 +143,7 @@ def make_new_post(request):
 
 
 def delete_post(request, slug):
+    """Allow users to delete their own posts."""
     post = get_object_or_404(Post, slug=slug, status=1)
     if post.author == request.user and request.method == 'POST':
         post.delete()
@@ -163,6 +171,7 @@ def edit_post(request, pk):
 
 @login_required
 def profile(request):
+    """Display and edit the user's profile and show their activities."""
     posts = Post.objects.filter(author=request.user)
     profile, created = Profile.objects.get_or_create(user=request.user)
     if request.method == 'POST':

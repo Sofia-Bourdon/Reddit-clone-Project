@@ -1,4 +1,5 @@
 
+// Toggle form buttons
 function toggleForm(buttonId, formId) {
     var button = document.getElementById(buttonId);
     var form = document.getElementById(formId);
