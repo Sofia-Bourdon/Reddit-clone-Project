@@ -15,8 +15,8 @@
                             <h6 class="subreddit-id">{{ post.subreddit }}</h6>
                         </div>
                         {% if post.author == request.user %}
-                        <button class="btn btn-outlined" id="editPostButton" onclick="toggleEditForm()">Edit
-                            Post</button>
+                        <button class="btn" id="editPostButton" onclick="toggleEditForm()"><i
+                                class="fa-solid fa-pen-to-square"></i></button>
                         <div id="editForm" style="display: none;">
                             <form method="POST" action="{% url 'edit_post' pk=post.pk %}">
                                 {% csrf_token %}
@@ -27,7 +27,7 @@
                         <div class="col d-flex justify-content-end">
                             <form method="POST" action="{% url 'delete_post' post.slug %}">
                                 {% csrf_token %}
-                                <button class="btn" type="submit">Delete Post</button>
+                                <button class="btn" type="submit">Delete</button>
                             </form>
                         </div>
                         {% endif %}
