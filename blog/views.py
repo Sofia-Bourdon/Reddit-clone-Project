@@ -88,6 +88,7 @@ def comment_post(request, slug):
             comment.post = post
             comment.save()
             return redirect('post_detail', pk=post.pk)
+            messages.success(request, 'Your comment is waiting for approval!')
             UserActivity.objects.create(
                 user=request.user, action_type='comment_created')
 
@@ -135,6 +136,7 @@ def make_new_post(request):
             new_post = form.save(commit=False)
             new_post.author = request.user
             new_post.save()
+            messages.success(request, 'Your post was created successfully!')
             return redirect('post_detail', pk=new_post.pk)
             UserActivity.objects.create(
                 user=request.user, action_type='post_created')
@@ -147,6 +149,7 @@ def delete_post(request, slug):
     post = get_object_or_404(Post, slug=slug, status=1)
     if post.author == request.user and request.method == 'POST':
         post.delete()
+        messages.success(request, 'Your post was successfully deleted!')
     return redirect('home')
 
 
