@@ -23,7 +23,7 @@ def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     approved_comments = post.comments.filter(
         approved=True).order_by('created_on')
-    subreddits = Subreddit.objects.all()  # Get all subreddits
+    subreddits = Subreddit.objects.all()
     form = CommentForm(request.POST or None)
 
     if request.method == 'POST':
@@ -31,7 +31,7 @@ def post_detail(request, pk):
             handle_upvote(request, post)
         elif 'downvote' in request.POST:
             handle_downvote(request, post)
-        elif form.is_valid():  # This will only run if the form is valid
+        elif form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
@@ -171,8 +171,12 @@ def profile(request):
     activities = UserActivity.objects.filter(
         user=request.user).order_by('-timestamp')
 
-    context = {
-        'form': form,
-        'activities': activities
-    }
-    return render(request, 'profile.html', context)
+    return render(
+        request,
+        'profile.html',
+        {
+            'Profile': profile,
+            'form': form,
+            'activities': activities,
+        },
+    )

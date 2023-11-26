@@ -1,15 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Update Profile</button>
-            </form>
+            <h2>{{ profile.user }}Username</h2>
+            <img class="img" src="{{ profile.profile_picture }}" />
+            <p>{{ profile.bio }}</p>
+            <!-- Edit Profile button -->
+            <button id="editProfile" class="btn" onclick="toggleForm('editProfile', 'profileForm')">Edit</button>
+            <div id="profileForm" style="display: none;">
+                <div class="content-section">
+                    <form method="POST" action="{% url 'profile' %}">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-secondary">Update</button>
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="col-md-4">
             <h2>Activity</h2>

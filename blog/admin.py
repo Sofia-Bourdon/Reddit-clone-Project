@@ -29,7 +29,7 @@ class CommentAdmin(admin.ModelAdmin):
         'edit_comments',
         'delete_comments',
     ]
-    
+
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
 
@@ -42,7 +42,7 @@ class CommentAdmin(admin.ModelAdmin):
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     model = Profile
+    list_display = ('user', 'profile_picture', 'bio')
 
-#Code taken from: https://codinggear.blog/how-to-register-model-in-django-admin/?utm_content=cmp-true
+
 admin.site.register(Subreddit)
-
