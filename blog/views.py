@@ -83,6 +83,9 @@ def comment_post(request, slug):
             comment.post = post
             comment.save()
             return redirect('post_detail', pk=post.pk)
+            UserActivity.objects.create(
+                user=request.user, action_type='comment_created')
+
     else:
         form = CommentForm()
     return render(request, 'post_detail.html', {'form': form})
@@ -126,6 +129,8 @@ def make_new_post(request):
             new_post.author = request.user
             new_post.save()
             return redirect('post_detail', pk=new_post.pk)
+            UserActivity.objects.create(
+                user=request.user, action_type='post_created')
     else:
         return redirect('home')
 
@@ -158,6 +163,7 @@ def edit_post(request, pk):
 
 @login_required
 def profile(request):
+    posts = Post.objects.filter(author=request.user)
     profile, created = Profile.objects.get_or_create(user=request.user)
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES,
@@ -181,5 +187,6 @@ def profile(request):
             'profile': profile,
             'form': form,
             'activities': activities,
+            'posts': posts,
         },
     )
