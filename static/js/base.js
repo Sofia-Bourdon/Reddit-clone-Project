@@ -5,11 +5,16 @@ function toggleForm(buttonId, formId) {
 
     console.log("function working");
 
+    if (!button.dataset.originalHtml) {
+        button.dataset.originalHtml = button.innerHTML;
+    }
+
     if (form.style.display === 'none') {
         form.style.display = 'block';
         button.textContent = "Close";
     } else {
         form.style.display = 'none';
-        button.textContent = "Create new post";
+        button.innerHTML = button.dataset.originalHtml;
+
     }
 }
