@@ -203,6 +203,12 @@ a:hover {
     font-weight: 500;
 }
 
+.profilepic {
+    border-radius: 15%;
+    max-width: 65%;
+    max-height: 65%;
+}
+
 .footer {
     background-color: #F2F4F4;
     width: 100%;

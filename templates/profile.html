@@ -7,9 +7,25 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <h2>{{ profile.user }}</h2>
-            <img class="img-thumbnail" src="{{ request.user.profile.profile_picture.url }}" />
-            <p>{{ request.user.profile.bio }}</p>
+            <!-- Profile info -->
+            <img id="profilepagepic" class="profilepic" src="{{ request.user.profile.profile_picture.url }}" />
+            <div class="container mt-3">
+                <div class="col">
+                    <div class="row">
+                        <h2>{{ profile.user }}</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <strong>Bio:</strong>
+                            </div>
+                            <div class="row">
+                                <p>{{ request.user.profile.bio }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Edit Profile button -->
             <button id="editProfile" class="btn" onclick="toggleForm('editProfile', 'profileForm')">Edit</button>
             <div id="profileForm" style="display: none;">
