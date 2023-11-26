@@ -14,7 +14,7 @@ class CommentForm(forms.ModelForm):
         self.helper = FormHelper(self)
         self.helper.layout = Layout(
             Field('body', rows="3", css_class='form-control'),
-            Submit('submit', 'Post Comment', css_class='btn btn-primary mt-2')
+            Submit('submit', 'Post Comment', css_class='btn btn-outlined mt-2')
         )
 
 
@@ -30,7 +30,7 @@ class PostForm(forms.ModelForm):
             Field('title', css_class='form-control'),
             Field('content', css_class='form-control'),
             Field('subreddit', css_class='form-control'),
-            Submit('submit', 'Submit Post', css_class='btn btn-primary mt-2')
+            Submit('submit', 'Submit Post', css_class='btn btn-outlined mt-2')
         )
 
 

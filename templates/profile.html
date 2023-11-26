@@ -28,7 +28,7 @@
             {% if profile.profile_picture %}
             <img id="profilepagepic" class="profilepic" src="{{ request.user.profile.profile_picture.url }}" />
             {% else %}
-            <img id="profilepagepic" class="profilepic" class="img" src="{% static 'media/default.jpeg' %}" />
+            <img class="profilepic" src="{% static 'media/default.jpeg' %}" />
             {% endif %}
             <div class="container mt-3">
                 <div class="col">
