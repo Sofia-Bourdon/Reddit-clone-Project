@@ -158,13 +158,16 @@ def edit_post(request, pk):
 
 @login_required
 def profile(request):
-    Profile.objects.get_or_create(user=request.user)
+    profile, created = Profile.objects.get_or_create(user=request.user)
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES,
                            instance=request.user.profile)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Your profile was successfully updated!')
             return redirect('profile')
+        else:
+            messages.error(request, 'Please correct the error below.')
     else:
         form = ProfileForm(instance=request.user.profile)
 
@@ -175,7 +178,7 @@ def profile(request):
         request,
         'profile.html',
         {
-            'Profile': profile,
+            'profile': profile,
             'form': form,
             'activities': activities,
         },
