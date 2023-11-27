@@ -107,6 +107,26 @@ def delete_comment(request, pk):
 
 
 @login_required
+def edit_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    if comment.name == request.user.username:  # Assuming comment.name stores the username
+        if request.method == 'POST':
+            form = CommentForm(request.POST, instance=comment)
+            if form.is_valid():
+                form.save()
+                messages.success(
+                    request, 'Your comment was successfully updated!')
+                return redirect('post_detail', pk=comment.post.pk)
+        else:
+            form = CommentForm(instance=comment)
+        return render(request, 'edit_comment.html', {'form': form})
+    else:
+        messages.error(
+            request, 'You do not have permission to edit this comment.')
+        return redirect('post_detail', pk=comment.post.pk)
+
+
+@login_required
 def subreddit(request, slug):
     """Show posts for a specific subreddit and allow new post submissions."""
     subreddit = get_object_or_404(Subreddit, slug=slug)
