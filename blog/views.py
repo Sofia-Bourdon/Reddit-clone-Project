@@ -33,7 +33,8 @@ def post_detail(request, pk):
             handle_upvote(request, post)
         elif 'downvote' in request.POST:
             handle_downvote(request, post)
-        elif form.is_valid():
+    else:
+        if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
