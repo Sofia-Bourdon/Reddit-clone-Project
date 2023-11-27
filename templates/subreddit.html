@@ -32,6 +32,7 @@
                                 <h6 class="subreddit-id">{{ post.subreddit }}</h6>
                             </div>
                             <div class="col d-flex justify-content-end">
+                                <!-- edit and delete btn -->
                                 {% if post.author == request.user %}
                                 <button class="btn" id="editPostButton" onclick="toggleEditForm()"><i
                                         class="fa-solid fa-pen-to-square"></i></button>
@@ -53,24 +54,22 @@
                             <div class="col-auto">
                                 <div class="row votes">
                                     {% if user.is_authenticated %}
-                                    <form method="POST">
-                                        {% csrf_token %}
-                                        <div class="col text-center">
-                                            <button type="submit" name="upvote"
-                                                class="btn upvote-btn {% if user in post.upvotes.all %}active{% endif %}">
-                                                <i class="fa-solid fa-arrow-up fa-xl"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col text-center my-1">
-                                            <span class="number-of-votes">{{ post.total_votes }}</span>
-                                        </div>
-                                        <div class="col text-center">
-                                            <button type="submit" name="downvote"
-                                                class="btn downvote-btn {% if user in post.downvotes.all %}active{% endif %}">
-                                                <i class="fa-solid fa-arrow-down fa-xl"></i>
-                                            </button>
-                                        </div>
-                                    </form>
+                                    {% csrf_token %}
+                                    <div class="col text-center">
+                                        <button type="submit" name="upvote"
+                                            class="btn upvote-btn {% if user in post.upvotes.all %}active{% endif %}">
+                                            <i class="fa-solid fa-arrow-up fa-xl"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col text-center my-1">
+                                        <span class="number-of-votes">{{ post.total_votes }}</span>
+                                    </div>
+                                    <div class="col text-center">
+                                        <button type="submit" name="downvote"
+                                            class="btn downvote-btn {% if user in post.downvotes.all %}active{% endif %}">
+                                            <i class="fa-solid fa-arrow-down fa-xl"></i>
+                                        </button>
+                                    </div>
                                     {% endif %}
                                 </div>
                             </div>

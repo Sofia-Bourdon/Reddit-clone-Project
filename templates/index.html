@@ -56,23 +56,21 @@
                                     <div class="row">
                                         <div class="col-auto">
                                             <div class="row votes">
-                                                <a href="{% url 'post_detail' post.id %}">
-                                                    <div class="col text-center">
-                                                        <button type="submit" name="upvote"
-                                                            class="btn upvote-btn {% if user in post.upvotes.all %}active{% endif %}">
-                                                            <i class="fa-solid fa-arrow-up fa-xl"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="col text-center my-1">
-                                                        <span class="number-of-votes">{{ post.total_votes }}</span>
-                                                    </div>
-                                                    <div class="col text-center">
-                                                        <button type="submit" name="downvote"
-                                                            class="btn downvote-btn {% if user in post.downvotes.all %}active{% endif %}">
-                                                            <i class="fa-solid fa-arrow-down fa-xl"></i>
-                                                        </button>
-                                                    </div>
-                                                </a>
+                                                <div class="col text-center">
+                                                    <button type="submit" name="upvote"
+                                                        class="btn upvote-btn {% if user in post.upvotes.all %}active{% endif %}">
+                                                        <i class="fa-solid fa-arrow-up fa-xl"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="col text-center my-1">
+                                                    <span class="number-of-votes">{{ post.total_votes }}</span>
+                                                </div>
+                                                <div class="col text-center">
+                                                    <button type="submit" name="downvote"
+                                                        class="btn downvote-btn {% if user in post.downvotes.all %}active{% endif %}">
+                                                        <i class="fa-solid fa-arrow-down fa-xl"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-6 col-md-8">
