@@ -11,8 +11,6 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterField(
-            model_name='post',
-            name='status',
-            field=models.IntegerField(choices=[(0, 'Draft'), (1, 'Published')], default=1),
-        ),
-    ]
+            model_name='post', name='status', field=models.IntegerField(
+                choices=[
+                    (0, 'Draft'), (1, 'Published')], default=1), ), ]

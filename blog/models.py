@@ -21,7 +21,10 @@ ACTION_CHOICES = (
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField(
-        default='default.jpg', upload_to='profile_pictures', null=True, blank=True)
+        default='default.jpg',
+        upload_to='profile_pictures',
+        null=True,
+        blank=True)
     bio = models.TextField(blank=True)
 
     def __str__(self):
@@ -67,9 +70,15 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS_CHOICES, default=1)
     subreddit = models.ForeignKey(Subreddit, on_delete=models.CASCADE)
     upvotes = models.ManyToManyField(
-        User, related_name='post_upvotes', blank=True, related_query_name='post_upvote')
+        User,
+        related_name='post_upvotes',
+        blank=True,
+        related_query_name='post_upvote')
     downvotes = models.ManyToManyField(
-        User, related_name='post_downvotes', blank=True, related_query_name='post_downvote')
+        User,
+        related_name='post_downvotes',
+        blank=True,
+        related_query_name='post_downvote')
 
     class Meta:
         ordering = ['-created_on']
@@ -96,17 +105,27 @@ class Comment(models.Model):
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=80)
-    user = models.ForeignKey(User, on_delete=models.CASCADE,
-                             related_name='user_comments', null=True, blank=True)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='user_comments',
+        null=True,
+        blank=True)
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
     status = models.IntegerField(choices=STATUS_CHOICES, default=0)
     upvotes = models.ManyToManyField(
-        User, related_name='comment_upvotes', blank=True, related_query_name='comment_upvote')
+        User,
+        related_name='comment_upvotes',
+        blank=True,
+        related_query_name='comment_upvote')
     downvotes = models.ManyToManyField(
-        User, related_name='comment_downvotes', blank=True, related_query_name='comment_downvote')
+        User,
+        related_name='comment_downvotes',
+        blank=True,
+        related_query_name='comment_downvote')
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"

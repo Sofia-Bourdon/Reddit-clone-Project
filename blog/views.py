@@ -200,7 +200,9 @@ def edit_post(request, pk):
     else:
         edit_form = PostForm(instance=post)
 
-    return render(request, 'post_detail.html', {'edit_form': edit_form, 'post': post})
+    return render(
+        request, 'post_detail.html', {
+            'edit_form': edit_form, 'post': post})
 
 
 @login_required
