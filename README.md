@@ -119,6 +119,8 @@ Here are the primary colors used in the design:
 
 The homepage of Clone|Reddit serves as the central hub for user interaction and content discovery. Here's what users will find:
 
+![homepage_screenshot](https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/eb6de916-d087-4d2f-a661-38cd50e7ca80)
+
 - **Navigation Header**: At the top, users are greeted with the Clone|Reddit logo and options for profile access and logging out, providing a clear path to account management.
   
 - **Create Post**: Users are invited to contribute to the community with an easily accessible 'Create Post' button, that opens the form to create a brand new post.
@@ -134,6 +136,8 @@ The homepage of Clone|Reddit serves as the central hub for user interaction and 
 
 ### Making Posts and Comments
 * Our platform encourages active participation and content creation from our user community. By clicking on the 'Create Post' button, accessible both from the homepage and within each subreddit page, users are presented with a straightforward form. This form is the gateway to sharing new ideas, stories, or discussions.
+
+![post-form](https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/78adb01a-fcf8-4163-9851-d43878e0d02f)
 
 The form fields are concise, requiring:
 - **Title**: A catchy heading for the post.
@@ -154,6 +158,9 @@ Here's how it works:
 
 Subreddits are the cornerstone of our platform, acting as dedicated spaces for specific topics or discussions. They are carefully curated and established by administrators through the admin panel, ensuring that each subreddit serves a distinct purpose and upholds community standards.
 
+![subreddit_screenshot](https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/df3e484c-3e18-45e3-8061-b668e7f9d33c)
+
+
 Here's what users can expect when accessing a subreddit:
 
 - **Subreddit Header**: At the top of each subreddit page, users are greeted by the subreddit's name, prominently displayed. This serves as a clear indication of the community theme and topic.
@@ -166,6 +173,9 @@ Here's what users can expect when accessing a subreddit:
 ## User Profile
 
 Upon successful registration, each user gains access to a personal profile to showcase their individuality and contributions on the platform. The profile link, conveniently located in the navigation bar, directs users to their profile page.
+
+![profile_user](https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/5aeb22e6-3902-4023-baa1-49bab7e68396)
+
 
 Here's the composition of the User Profile page:
 
