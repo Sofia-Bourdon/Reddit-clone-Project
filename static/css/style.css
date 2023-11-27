@@ -203,6 +203,12 @@ a:hover {
     font-weight: 500;
 }
 
+.comment-card {
+    background-color: white;
+    margin-top: 3%;
+    padding: 3%;
+}
+
 .btn-outlined {
     border: 2px solid rgba(0, 0, 0, 0.428);
     border-radius: 25px;
