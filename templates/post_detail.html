@@ -100,8 +100,6 @@
                 <div class="comment-card">
                     <div class="comment-header">
                         <div class="col d-flex justify-content-end">
-                            <p>Comment User: {{ comment.user }}</p>
-                            <p>Request User: {{ request.user }}</p>
                             {% if comment.user == request.user %}
                             <button class="btn" id="editCommentButton-{{ comment.pk }}"
                                 onclick="toggleForm('editCommentButton-{{ comment.pk }}', 'editCommentForm-{{ comment.pk }}')">
@@ -124,18 +122,17 @@
                 </div>
                 {% endfor %}
             </div>
-
-            <!-- Subreddits Column -->
-            <div class="col-md-4 mt-4">
-                <div class="subreddits-list">
-                    <ul class="list-group-subreddits">
-                        {% for subreddit in subreddits %}
-                        <li class="list-group-item">
-                            <a href="{% url 'subreddit' subreddit.slug %}">{{ subreddit.name }}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+        </div>
+        <!-- Subreddits Column -->
+        <div class="col-md-4 mt-4">
+            <div class="subreddits-list">
+                <ul class="list-group-subreddits">
+                    {% for subreddit in subreddits %}
+                    <li class="list-group-item">
+                        <a href="{% url 'subreddit' subreddit.slug %}">{{ subreddit.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
