@@ -119,7 +119,7 @@ Here are the primary colors used in the design:
 
 The homepage of Clone|Reddit serves as the central hub for user interaction and content discovery. Here's what users will find:
 
-![homepage_screenshot](https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/eb6de916-d087-4d2f-a661-38cd50e7ca80)
+![new-homepage](https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/bff527be-06d9-494b-8cb7-bede2c1a7902)
 
 - **Navigation Header**: At the top, users are greeted with the Clone|Reddit logo and options for profile access and logging out, providing a clear path to account management.
   
@@ -158,7 +158,7 @@ Here's how it works:
 
 Subreddits are the cornerstone of our platform, acting as dedicated spaces for specific topics or discussions. They are carefully curated and established by administrators through the admin panel, ensuring that each subreddit serves a distinct purpose and upholds community standards.
 
-![subreddit_screenshot](https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/df3e484c-3e18-45e3-8061-b668e7f9d33c)
+![new-subreddit](https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/7200f1ca-1319-4e6e-90c0-0ae04c3a4087)
 
 
 Here's what users can expect when accessing a subreddit:
@@ -208,12 +208,17 @@ Looking ahead, we are committed to evolving our platform to enhance user connect
 - The rollout of friend requests and direct messaging to foster personal connections within the community.
 - Advanced search features and sorting options to streamline content discovery.
 - Sophisticated moderation tools to uphold and enforce community guidelines more effectively.
+- Users will be able to upvote and downvote directly through the index page or subreddit page.
 
 ## Testing and Deployment
 
-Key functionalities of the application underwent functional testing to ensure reliable operation. The platform has been deployed to Heroku, streamlining the deployment process for this Django application. Essential configuration for Heroku deployment was implemented, and the application is now live on Heroku's cloud platform.
+* Key functionalities of the application underwent functional testing to ensure reliable operation. The platform has been deployed to Heroku, streamlining the deployment process for this Django application. Essential configuration for Heroku deployment was implemented, and the application is now live on Heroku's cloud platform.
 
-The Lighthouse performance results below showcase the application's performance metrics:
+* Manual testing was performed to check for bugs during the application and before deployment.
+
+* autopep8 was used for python code formatting. The command  'autopep8 --in-place --aggressive --aggressive --recursive .' will have autopep8 look through all existing python files and find and correct formatting errors and others.
+
+* The Lighthouse performance results below showcase the application's performance metrics:
 
 ![Lighthouse Performance Results](https://github.com/Sofia-Bourdon/Reddit-clone-Project/assets/112895499/596165f3-d954-465b-a537-c99986e2a532)
 
