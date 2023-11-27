@@ -100,11 +100,18 @@
                 <div class="comment-card">
                     <div class="comment-header">
                         <div class="col d-flex justify-content-end">
-                            {% if comment.author == request.user %}
-                            <form method="POST" action="{% url 'delete_comment' pk=comment.pk %}">
-                                {% csrf_token %}
-                                <button class="btn" type="submit">Delete</button>
-                            </form>
+                            {% if comment.user == request.user %}
+                            <button class="btn" id="editCommentButton-{{ comment.pk }}"
+                                onclick="toggleForm('editCommentButton-{{ comment.pk }}', 'editCommentForm-{{ comment.pk }}')">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div id="editCommentForm-{{ comment.pk }}" style="display: none;">
+                                <form method="POST" action="{% url 'edit_comment' pk=comment.pk %}">
+                                    {% csrf_token %}
+                                    {{ comment_form|crispy }}
+                                    <button class="btn btn-secondary" type="submit">Save Changes</button>
+                                </form>
+                            </div>
                             {% endif %}
                         </div>
                         <p class="comment-author">{{ comment.author }} | {{ comment.created_on }}</p>
